@@ -5,8 +5,8 @@
 var chalk     = require('chalk'),
     os         = require('os'),
     httpServer = require('../lib/tm-http-server'),
-    portfinder = require('portfinder'),
-    opener     = require('opener'),
+    portfinder /* = require('portfinder') dyn loaded below */,
+    opener = (function(){var f; return function(){if(!f){f=require('opener')}return f.apply(null,arguments)}})(),
 
     fs         = require('fs'),
     url        = require('url');
@@ -126,6 +126,8 @@ if (version) {
 }
 
 if (!port) {
+  if(!portfinder)
+    portfinder = require('portfinder');
   portfinder.basePort = 8080;
   portfinder.getPort(function (err, port) {
     if (err) { throw err; }
