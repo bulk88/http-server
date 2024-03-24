@@ -4,7 +4,7 @@
 
 var chalk     = require('chalk'),
     os         = require('os'),
-    httpServer = require('../lib/http-server'),
+    httpServer = require('../lib/tm-http-server'),
     portfinder = require('portfinder'),
     opener     = require('opener'),
 
@@ -21,7 +21,7 @@ process.title = 'http-server';
 
 if (argv.h || argv.help) {
   console.log([
-    'usage: http-server [path] [options]',
+    'usage: tm-http-server [path] [options]',
     '',
     'options:',
     '  -p --port    Port to use. If 0, look for open port. [8080]',
