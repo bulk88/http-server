@@ -269,10 +269,12 @@ if (process.platform === 'win32') {
 
 process.on('SIGINT', function () {
   logger.info(chalk.red('http-server stopped.'));
+  process.kill(process.pid);
   process.exit();
 });
 
 process.on('SIGTERM', function () {
   logger.info(chalk.red('http-server stopped.'));
+  process.kill(process.pid);
   process.exit();
 });
